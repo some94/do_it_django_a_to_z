@@ -1,2 +1,4 @@
-# do_it_django_a_to_z
-Do it 파이썬 웹프로그래밍 Django A to Z
+# Do it! 파이썬 웹 개발의 정석
+<br/>
+
+Django를 공부하며 실습한 내용을 올리는 레포지토리 입니다.
