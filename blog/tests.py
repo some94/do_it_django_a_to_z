@@ -65,8 +65,8 @@ class TestView(TestCase):
 
         # 2.2. 포스트 목록 페이지와 똑같은 내비게이션 바가 있다.
         navbar = soup.nav
-        self.assertEqual(response.status_code, 200)
-        soup = BeautifulSoup(response.content, 'html.parser')
+        self.assertIn('Blog', navbar.text)
+        self.assertIn('About Me', navbar.text)
 
         # 2.3. 첫 번째 포스트의 제목이 웹 브라우저 탭 타이틀에 들어 있다.
         self.assertIn(post_001.title, soup.title.text)
@@ -74,7 +74,7 @@ class TestView(TestCase):
         # 2.4. 첫 번째 포스트의 제목이 포스트 영역에 있다.
         main_area = soup.find('div', id='main-area')
         post_area = main_area.find('div', id='post-area')
-        self.assertIn(post_area.title, post_area.text)
+        self.assertIn(post_001.title, post_area.text)
 
         # 2.5. 첫 번째 포스트의 작성자(author)가 포스트 영역에 있다.(아직 구현할 수 없음).
         # 2.6. 첫 번째 포스트의 내용(content)이 포스트 영역에 있다.
