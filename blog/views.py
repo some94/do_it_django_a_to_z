@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from django.views.generic import ListView, DetailView
 from .models import Post, Category
 
@@ -14,6 +13,12 @@ class PostList(ListView):
 
 class PostDetail(DetailView):
     model = Post
+
+    def get_context_data(self,  **kwargs):
+        context = super(PostDetail, self).get_context_data()
+        context['categories'] = Category.objects.all()
+        context['no_category_post_count'] = Post.objects.filter(category=None).count()
+        return context
 
 # FBV 방식으로 개발한 코드(CBV 방식으로 변경하는 관계로 주석 처리)
 # def index(request):
